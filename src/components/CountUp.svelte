@@ -1,52 +1,20 @@
-<!-- import { useEffect, useState } from "react";
+<script>
+  export let from = 0;
+  export let to;
+  export let durationInSeconds = 3;
+  export let classNames;
 
-type CountUpProps = {
-  from?: number;
-  to: number;
-  durationInSeconds?: number;
-  className?: string;
-};
-
-const INTERVAL_TIME = 10;
-
-const CountUp = ({
-  from = 0,
-  to,
-  durationInSeconds = 3,
-  className,
-}: CountUpProps) => {
-  const [count, setCount] = useState<number>(from);
+  const INTERVAL_TIME = 10;
+  let count = 0;
 
   const duration = durationInSeconds * 1000;
-
   const step = ((to - from) * INTERVAL_TIME) / duration;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prev) => {
-        if (prev + step < to) return prev + step;
-        clearInterval(interval);
-        return to;
-      });
-    }, INTERVAL_TIME);
-
-    return () => clearInterval(interval);
-  }, [to, step]);
-
-  return <span className={className}>{Math.round(count)}</span>;
-};
-
-export default CountUp; -->
-
-<script>
-  export let from;
-  export let to;
-  export let durationInSeconds;
-
-  const countUp = 0;
-
+  const interval = setInterval(() => {
+    if (count + step < to) return count = count + step;
+    clearInterval(interval);
+    return count = to;
+  });
 </script>
 
-<span class="text-red-500">
-  {from} {to} {durationInSeconds}
-</span>
+<span class={classNames}>{Math.round(count)}</span>
